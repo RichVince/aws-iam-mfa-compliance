@@ -1,0 +1,18 @@
+# AWS credential reports
+aws_credential_report*.csv
+*credential_report*.csv
+
+# Python temporary files
+__pycache__/
+*.pyc
+.env
+.env.*
+
+# Local test outputs
+mfa_findings_auto.txt
+mfa_findings_test.txt
+
+# AWS credentials
+.aws/
+*.pem
+*.key
