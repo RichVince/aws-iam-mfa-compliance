@@ -5,7 +5,7 @@ total_users = 0
 compliant_users = 0
 exceptions = 0
 
-with open("aws_credential_report_live.csv", newline="") as file:
+with open("../aws_credential_report_live.csv", newline="") as file:
     reader = csv.DictReader(file)
 
     with open("mfa_findings_auto.txt", "w") as report:

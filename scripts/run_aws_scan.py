@@ -36,6 +36,7 @@ print("Live AWS credential report saved.")
 # Run the existing compliance checker
 subprocess.run(
     ["python3", "check_mfa.py"],
+    cwd=Path(__file__).resolve().parent,
     check=True
 )
 
