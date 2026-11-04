@@ -5,7 +5,10 @@ total_users = 0
 compliant_users = 0
 exceptions = 0
 
-with open("../aws_credential_report_live.csv", newline="") as file:
+from pathlib import Path
+   
+csv_path = Path(__file__).resolve().parent.parent / "aws_credential_report_live.csv"
+with open(csv_path, newline="") as file:
     reader = csv.DictReader(file)
 
     with open("mfa_findings_auto.txt", "w") as report:
@@ -33,3 +36,4 @@ print(f"MFA exceptions: {exceptions}")
 if total_users > 0:
     compliance_rate = (compliant_users / total_users) * 100
     print(f"Compliance rate: {compliance_rate:.1f}%")
+
