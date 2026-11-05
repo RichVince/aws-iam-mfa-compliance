@@ -27,7 +27,7 @@ else:
 
 # Retrieve and save the live AWS report
 report = iam.get_credential_report()
-Path("aws_credential_report_live.csv").write_bytes(
+(Path(__file__).resolve().parent.parent / "aws_credential_report_live.csv").write_bytes(
     report["Content"]
 )
 
