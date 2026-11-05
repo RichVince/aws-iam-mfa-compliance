@@ -81,3 +81,38 @@ IAM credential reports may contain sensitive account metadata and should not be 
 
 ## Skills Demonstrated
 AWS IAM | Python Automation | Boto3 | GRC Engineering | IAM Compliance | Control Testing | Audit Evidence | Risk Assessment
+
+## Additional Control Validation
+
+### Simulated MFA Exception — Updated Test
+- Accounts scanned: 3
+- Compliant accounts: 2
+- MFA exceptions: 1
+- Not applicable accounts: 0
+- Compliance rate: 66.7%
+- Result: PASS
+
+The checker successfully detected a simulated IAM console
+user with MFA disabled.
+
+### Simulated Non-Console Account Test
+- Accounts scanned: 3
+- Compliant accounts: 2
+- MFA exceptions: 0
+- Not applicable accounts: 1
+- Compliance rate: 100%
+- Result: PASS
+
+The checker correctly excluded an account without console
+password access from the console MFA compliance denominator.
+
+### Validation Scope
+All simulated accounts were created in local CSV test data.
+No AWS IAM accounts or MFA configurations were modified.
+
+The live AWS assessment identified 2 compliant accounts
+and 0 MFA exceptions.
+
+The compliance percentage measures the implemented
+console MFA control only. It does not represent overall
+AWS account security or regulatory compliance.
