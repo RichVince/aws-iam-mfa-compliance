@@ -19,7 +19,18 @@ with open(csv_path, newline="") as file:
 
             total_users += 1
 
-            if password_enabled == "false" or mfa_status == "true":
+            if username == "<root_account>":
+                if mfa_status == "true":
+                    compliant_users += 1
+                    print(f"{username}: COMPLIANT")
+                else:
+                    exceptions += 1
+                    finding = f"{username}: EXCEPTION - Root MFA not enabled"
+                    print(finding)
+                    report.write(finding + "\n")
+            elif password_enabled == "false":
+                print(f"{username}: NOT APPLICABLE - No console password")
+            elif mfa_status == "true":
                 compliant_users += 1
                 print(f"{username}: COMPLIANT")
             else:
@@ -33,7 +44,12 @@ print(f"Total accounts scanned: {total_users}")
 print(f"Compliant accounts: {compliant_users}")
 print(f"MFA exceptions: {exceptions}")
 
-if total_users > 0:
-    compliance_rate = (compliant_users / total_users) * 100
+applicable_users = compliant_users + exceptions
+not_applicable_users = total_users - applicable_users
+
+print(f"Not applicable accounts: {not_applicable_users}")
+
+if applicable_users > 0:
+    compliance_rate = (compliant_users / applicable_users) * 100
     print(f"Compliance rate: {compliance_rate:.1f}%")
 

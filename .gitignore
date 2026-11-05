@@ -16,3 +16,4 @@ mfa_findings_test.txt
 .aws/
 *.pem
 *.key
+scripts/check_mfa_backup.py
