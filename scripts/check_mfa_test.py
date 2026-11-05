@@ -1,3 +1,8 @@
+# HISTORICAL TEST ONLY — NOT THE CURRENT MFA CONTROL IMPLEMENTATION
+# This early simulation checks mfa_active for every CSV record and does not
+# exclude IAM users without console password access. Its compliance percentage
+# must not be used as the current console MFA compliance metric.
+# For current control testing, use scripts/check_mfa.py and scripts/run_aws_scan.py.
 
 import csv
 
