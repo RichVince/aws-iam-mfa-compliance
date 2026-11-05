@@ -49,3 +49,27 @@ Exceptions: 0
 Compliance Rate: 100%
 
 The live credential report passed the implemented MFA check. The simulated finding does not represent an actual AWS account misconfiguration.
+
+## 9. Additional MFA Exception Validation
+
+Test Type: Simulated IAM credential report
+Test Account: simulated-no-mfa-user
+Console Password Enabled: True
+MFA Enabled: False
+
+Test Results:
+- Accounts Scanned: 3
+- Compliant Accounts: 2
+- MFA Exceptions: 1
+- Not Applicable Accounts: 0
+- Compliance Rate: 66.7%
+
+Expected Finding:
+simulated-no-mfa-user: EXCEPTION - MFA not enabled
+
+Outcome:
+PASS - The automated MFA checker correctly identified the simulated
+MFA exception and calculated the compliance rate.
+
+This was a controlled simulation. No actual AWS IAM account was
+modified or found noncompliant during live verification.
